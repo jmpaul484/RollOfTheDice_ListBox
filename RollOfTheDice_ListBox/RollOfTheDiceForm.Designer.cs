@@ -1,6 +1,6 @@
 ﻿namespace RollOfTheDice_ListBox
 {
-    partial class RoolOfTheDiceForm
+    partial class RollOfTheDiceForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -72,7 +72,7 @@
             OutcomeListBox.Size = new Size(776, 279);
             OutcomeListBox.TabIndex = 4;
             // 
-            // RoolOfTheDiceForm
+            // RollOfTheDiceForm
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -81,8 +81,8 @@
             Controls.Add(RollButton);
             Controls.Add(ClearButton);
             Controls.Add(ExitButton);
-            Name = "RoolOfTheDiceForm";
-            Text = "Form1";
+            Name = "RollOfTheDiceForm";
+            Text = "Roll of The Dice";
             ResumeLayout(false);
         }
 

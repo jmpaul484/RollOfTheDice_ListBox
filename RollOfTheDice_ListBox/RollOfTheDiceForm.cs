@@ -1,8 +1,14 @@
+//Jonathan Paul
+//RCET2265
+//Fall 2026
+//https://github.com/jmpaul484/RollOfTheDice_ListBox.git
+using System.Text;
+
 namespace RollOfTheDice_ListBox
 {
-    public partial class RoolOfTheDiceForm : Form
+    public partial class RollOfTheDiceForm : Form
     {
-        public RoolOfTheDiceForm()
+        public RollOfTheDiceForm()
         {
             InitializeComponent();
         }
@@ -24,6 +30,7 @@ namespace RollOfTheDice_ListBox
             Random rnd = new();
             int choice = 0;
             int[] rolls = new int[13];
+           
             for (int i = 0; i < 1000; i++)
             {
                 choice = rnd.Next(1, 7) + rnd.Next(1, 7);
@@ -67,19 +74,30 @@ namespace RollOfTheDice_ListBox
                 }
             }
 
-            OutcomeListBox.Items.Add("                 Roll of the Dice");
-            OutcomeListBox.Items.Add("-------------------------------------------------------");
-            for (int i = 2; i < rolls.Length; i++)
+            // Build horizontal display: title, separator, header row (2..12), counts row, separator
+            var headers = new StringBuilder();
+            var counts = new StringBuilder();
+            for (int i = 2; i <= 12; i++)
             {
-                OutcomeListBox.Items.Add($"{i,4}|");
+                headers.AppendFormat("{0,7}|", i);
+                counts.AppendFormat("{0,7}|", rolls[i]);
             }
-            OutcomeListBox.Items.Add("-------------------------------------------------------");
 
-            OutcomeListBox.Items.Add("-------------------------------------------------------");
-            for (int i = 2; i < rolls.Length; i++)
-            {
-                OutcomeListBox.Items.Add($"{rolls[i],4}|");
-            }
+            string numbersLine = headers.ToString();
+            string countsLine = counts.ToString();
+            string separator = new string('-', Math.Max(numbersLine.Length, 0));
+
+            string title = "Roll of The Dice";
+            int padding = (numbersLine.Length - title.Length) / 3;
+            if (padding < 0) padding = 0;
+            string titleLine = title.PadLeft(title.Length + padding);
+
+            OutcomeListBox.Items.Add(titleLine);
+            OutcomeListBox.Items.Add(separator);
+            OutcomeListBox.Items.Add(numbersLine);
+            OutcomeListBox.Items.Add(separator);
+            OutcomeListBox.Items.Add(countsLine);
+            OutcomeListBox.Items.Add(separator);
         }
 
     }

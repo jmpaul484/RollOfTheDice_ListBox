@@ -20,15 +20,10 @@ namespace RollOfTheDice_ListBox
 
         private void RollButton_Click(object sender, EventArgs e)
         {
-            OutcomeListBox.Items = DiceRolls();
-        }
-
-        static List<string> DiceRolls()
-        {
+            OutcomeListBox.Items.Clear();
             Random rnd = new();
             int choice = 0;
             int[] rolls = new int[13];
-
             for (int i = 0; i < 1000; i++)
             {
                 choice = rnd.Next(1, 7) + rnd.Next(1, 7);
@@ -72,20 +67,20 @@ namespace RollOfTheDice_ListBox
                 }
             }
 
-            Console.WriteLine("                 Roll of the Dice");
-            Console.WriteLine("-------------------------------------------------------");
-            // Print results in two rows: header (2-12) and counts below each header
+            OutcomeListBox.Items.Add("                 Roll of the Dice");
+            OutcomeListBox.Items.Add("-------------------------------------------------------");
             for (int i = 2; i < rolls.Length; i++)
             {
-                Console.Write($"{i,4}|");
+                OutcomeListBox.Items.Add($"{i,4}|");
             }
-            Console.WriteLine();
+            OutcomeListBox.Items.Add("-------------------------------------------------------");
 
-            Console.WriteLine("-------------------------------------------------------");
+            OutcomeListBox.Items.Add("-------------------------------------------------------");
             for (int i = 2; i < rolls.Length; i++)
             {
-                Console.Write($"{rolls[i],4}|");
+                OutcomeListBox.Items.Add($"{rolls[i],4}|");
             }
         }
+
     }
 }
